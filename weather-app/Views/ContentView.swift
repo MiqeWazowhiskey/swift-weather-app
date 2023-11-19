@@ -11,8 +11,17 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     var body: some View {
         VStack {
-            WelcomeView()
-                .environmentObject(locationManager)
+            if (locationManager.location == nil){
+                if (locationManager.isLoading){
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                else{
+                    WelcomeView()
+                        .environmentObject(locationManager)
+                }
+            }
         }
         .padding()
         .background(Color(hue: 0.537, saturation: 1.0, brightness: 1.0))

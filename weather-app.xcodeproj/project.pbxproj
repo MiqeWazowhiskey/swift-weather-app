@@ -16,6 +16,7 @@
 		B1DE70772B0A257A003E6472 /* weather_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE70762B0A257A003E6472 /* weather_appUITestsLaunchTests.swift */; };
 		B1DE70852B0A25F7003E6472 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE70842B0A25F7003E6472 /* LocationManager.swift */; };
 		B1DE70882B0A294B003E6472 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE70872B0A294B003E6472 /* WelcomeView.swift */; };
+		B1DE708A2B0A2DB9003E6472 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE70892B0A2DB9003E6472 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B1DE70762B0A257A003E6472 /* weather_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weather_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B1DE70842B0A25F7003E6472 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1DE70872B0A294B003E6472 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B1DE70892B0A2DB9003E6472 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				B1DE705B2B0A2579003E6472 /* ContentView.swift */,
 				B1DE70872B0A294B003E6472 /* WelcomeView.swift */,
+				B1DE70892B0A2DB9003E6472 /* WeatherView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1DE708A2B0A2DB9003E6472 /* WeatherView.swift in Sources */,
 				B1DE70882B0A294B003E6472 /* WelcomeView.swift in Sources */,
 				B1DE705C2B0A2579003E6472 /* ContentView.swift in Sources */,
 				B1DE705A2B0A2579003E6472 /* weather_appApp.swift in Sources */,
