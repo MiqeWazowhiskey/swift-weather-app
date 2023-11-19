@@ -12,6 +12,7 @@ struct WelcomeView: View {
     @EnvironmentObject var locationManager: LocationManager
     var body: some View {
         VStack{
+            Spacer()
             Text("Weather App")
                 .font(.largeTitle)
                 .fontWeight(.light)
@@ -24,6 +25,11 @@ struct WelcomeView: View {
             }
             .cornerRadius(50)
             .foregroundColor(.white)
+            Spacer()
+            Image("weatherIcon")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(10)
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .multilineTextAlignment(.center)

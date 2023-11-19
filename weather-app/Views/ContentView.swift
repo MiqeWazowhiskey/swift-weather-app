@@ -19,13 +19,13 @@ struct ContentView: View {
                     .progressViewStyle(.circular)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            if(locationManager.location == nil){
+            if(locationManager.location == nil && locationManager.isLoading==false){
                 WelcomeView()
                     .environmentObject(locationManager)
             }
             else{
                 if weather != nil {
-                    Text("fetched")
+                    WeatherView(weatherData: weather!)
                 }
                 else{
                     ProgressView()
