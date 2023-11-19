@@ -9,17 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var locationManager = LocationManager()
+    @State var weather: ResponseBody?
+    var weatherManager = WeatherManager()
+    
     var body: some View {
         VStack {
-            if (locationManager.location == nil){
-                if (locationManager.isLoading){
+            if (locationManager.isLoading){
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            if(locationManager.location == nil){
+                WelcomeView()
+                    .environmentObject(locationManager)
+            }
+            else{
+                if weather != nil {
+                    Text("fetched")
+                }
+                else{
                     ProgressView()
                         .progressViewStyle(.circular)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-                else{
-                    WelcomeView()
-                        .environmentObject(locationManager)
+                        .task {
+                            do{
+                                weather = try await weatherManager.getWeatherData(longtitude:
+                                                locationManager.location!.longitude, latitude: locationManager.location!.latitude)
+                            }
+                            catch {
+                                print("Something went wrong.")
+                            }
+                        }
                 }
             }
         }
