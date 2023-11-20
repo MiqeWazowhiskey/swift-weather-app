@@ -11,36 +11,34 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     @State var weather: ResponseBody?
     var weatherManager = WeatherManager()
+
     
     var body: some View {
+        
         VStack {
-            if (locationManager.isLoading){
+            if let currentWeather = weather  {
+                WeatherView(weatherData: currentWeather)
+            }
+            else if let location = locationManager.location {
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .task {
+                        do{weather = try await weatherManager.getWeatherData(longtitude:location.longitude, latitude: location.latitude)
+                        }
+                        catch {
+                            print("Something went wrong.")
+                        }
+                    }
+            }
+            else if locationManager.isLoading {
                 ProgressView()
                     .progressViewStyle(.circular)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            if(locationManager.location == nil && locationManager.isLoading==false){
+            else{
                 WelcomeView()
                     .environmentObject(locationManager)
-            }
-            else{
-                if weather != nil {
-                    WeatherView(weatherData: weather!)
-                }
-                else{
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .task {
-                            do{
-                                weather = try await weatherManager.getWeatherData(longtitude:
-                                                locationManager.location!.longitude, latitude: locationManager.location!.latitude)
-                            }
-                            catch {
-                                print("Something went wrong.")
-                            }
-                        }
-                }
             }
         }
         .padding()
